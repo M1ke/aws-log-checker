@@ -58,5 +58,7 @@ with open(active_conf_path, 'r+') as active_conf_file:
     active_conf = active_conf_file.read()
     if active_conf!=log_conf:
         print('Active conf and log conf are different. Will rewrite file and restart log service')
+        active_conf_file.seek(0)
         active_conf_file.write(log_conf)
+        active_conf_file.truncate()
         call(["service", "awslogs", "restart"])
