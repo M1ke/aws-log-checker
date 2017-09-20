@@ -40,7 +40,6 @@ for log in logs:
     
     for log_file in log_files:
         log_stream = log_file.replace(log_dir_path + '/', '')
-        print('log stream', log_stream)
 
         log_conf += "\n"
         log_conf += '[' + log_file + ']'+"\n"
