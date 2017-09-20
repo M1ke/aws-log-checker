@@ -13,3 +13,17 @@ This script is designed to be run on a schedule where a set of log directories a
 Rename `awslogs.conf.sample` to `awslogs.conf` and add any settings you want as default (e.g. syslog).
 
 Rename `list.csv.sample` to `list.csv` and add your own directories and related settings.
+
+## Running
+
+Run with:
+
+```
+$ python3 check.py
+```
+
+Optionally the conf sample and list files can be specified in the run command:
+
+```
+$ python3 check.py --list /path/to/list.csv --conf /path/to/sample-awslogs.conf
+```
