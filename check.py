@@ -2,7 +2,6 @@ import csv
 from os import listdir, path, walk
 from glob import glob
 from os.path import isfile, join
-from pprint import pprint
 from subprocess import call
 import argparse
 

@@ -27,3 +27,5 @@ Optionally the conf sample and list files can be specified in the run command:
 ```
 $ python3 check.py --list /path/to/list.csv --conf /path/to/sample-awslogs.conf
 ```
+
+You may need to run as root in order to reset the `awslogs` service, and possibly to edit the file as well. You're strongly encouraged to read over the source code to check there's no risk before running with privileges, but that's your call!
