@@ -60,4 +60,4 @@ with open(active_conf_path, 'r+') as active_conf_file:
         active_conf_file.seek(0)
         active_conf_file.write(log_conf)
         active_conf_file.truncate()
-        call(["service", "awslogs", "restart"])
+        call(["/usr/sbin/service", "awslogs", "restart"])
