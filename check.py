@@ -9,9 +9,9 @@ script_path = path.dirname(__file__)
 if script_path:
     script_path += '/'
 
-parser = argparse.ArgumentParser(description='Rewrite the awslogs.conf file')
-parser.add_argument('--list', dest='list_file', help='A CSV file of directories')
-parser.add_argument('--conf', dest='conf_file', help='Sample AWS conf file')
+parser = argparse.ArgumentParser(description = 'Rewrite the awslogs.conf file')
+parser.add_argument('--list', dest = 'list_file', help = 'A CSV file of directories')
+parser.add_argument('--conf', dest = 'conf_file', help = 'Sample AWS conf file')
 args = parser.parse_args()
 
 list_path = args.list_file if args.list_file else script_path + 'list.csv'
@@ -40,6 +40,8 @@ for log in logs:
     
     for log_file in log_files:
         log_stream = log_file.replace(log_dir_path + '/', '')
+        if log['per_instance']:
+            log_stream += '-{instance_id}-{ip_address}'
 
         log_conf += "\n"
         log_conf += '[' + log_file + ']'+"\n"
@@ -48,9 +50,9 @@ for log in logs:
             log_conf += 'datetime_format = ' + log['datetime_format'] + "\n"
 
         log_conf += 'file = '+ log_file + "\n"
-        log_conf += 'log_stream_name = ' + log_stream +"\n"
-        log_conf += 'initial_position = start_of_file' +"\n"
-        log_conf += 'log_group_name = ' + log['log_group_name'] +"\n"
+        log_conf += 'log_stream_name = ' + log_stream + "\n"
+        log_conf += 'initial_position = start_of_file' + "\n"
+        log_conf += 'log_group_name = ' + log['log_group_name'] + "\n"
 
 active_conf_path = '/var/awslogs/etc/awslogs.conf'
 with open(active_conf_path, 'r+') as active_conf_file:

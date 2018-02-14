@@ -1,1 +1,1 @@
-dir,datetime_format,log_group_name,recursive
+dir,datetime_format,log_group_name,recursive,per_instance

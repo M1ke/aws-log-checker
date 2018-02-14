@@ -8,6 +8,8 @@ Unfortunately if you want to aggregate multiple logs in the same directory, thes
 
 This script is designed to be run on a schedule where a set of log directories are specified in a CSV file along with directory specific settings. Each time it runs it checks the directories specified, and builds a list of files. If the list of files has changed the configuration file is rewritten and the logging service is restarted.
 
+There is a "per-instance" setting you may use to append the instance ID, use this if you expect multiple instances to be generating a stream with the same name to avoid conflicts.
+
 ## Setup
 
 Rename `awslogs.conf.sample` to `awslogs.conf` and add any settings you want as default (e.g. syslog).
